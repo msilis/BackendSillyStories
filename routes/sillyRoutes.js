@@ -15,7 +15,7 @@ router.get("/stories", async (req, res) => {
     console.log(err);
   }
 });
-
+//get random story
 router.get("/randomStory", async (req, res) => {
   console.log("random story endpoint");
   const storyArray = [];
