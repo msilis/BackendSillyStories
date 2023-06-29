@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 8086;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 //MongoDB
@@ -16,6 +17,12 @@ db.once("open", () => console.log("Connected to Silly Stories Database"));
 
 const groupRouter = require("./routes/sillyRoutes");
 
+//Cors options
+const corsOptions = {
+  origin: ["http://localhost:5173"],
+};
+
+app.use(cors(corsOptions));
 app.use("/", groupRouter);
 app.use(bodyParser.json());
 

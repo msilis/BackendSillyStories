@@ -22,7 +22,6 @@ router.get("/randomStory", async (req, res) => {
   try {
     const newStory = await Story.find({});
     storyArray.push(newStory);
-    console.log(storyArray);
     const randomStory = Math.floor(Math.random() * storyArray[0].length);
     console.log(randomStory);
     res.status(200).json(storyArray[0][randomStory]);
