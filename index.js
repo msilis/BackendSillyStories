@@ -19,7 +19,10 @@ const groupRouter = require("./routes/sillyRoutes");
 
 //Cors options
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: [
+    "http://localhost:5173",
+    "https://prismatic-clafoutis-caeedc.netlify.app",
+  ],
 };
 
 app.use(cors(corsOptions));
