@@ -2,5 +2,7 @@ POST http://localhost:8086/saveStory
 Content-Type: "application/json";
 
 {
-    "story": "sample story"
+    "story": {
+        "displayStory": "Sample story"
+    }
 }

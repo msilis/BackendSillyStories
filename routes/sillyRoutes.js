@@ -36,17 +36,30 @@ router.get("/randomStory", async (req, res) => {
 //Save story
 router.post("/saveStory", async (req, res) => {
   console.log("SaveStory endpoint");
-  console.log(req.body.story.displayStory);
   try {
     const saveStory = new Save({
       story: req.body.story.displayStory,
     });
 
     const addSavedStory = await saveStory.save();
+    console.log("story saved");
     res.status(201).json(addSavedStory);
   } catch (err) {
     console.log(err);
     res.status(500).send({ msg: "There was an error saving your story!" });
+  }
+});
+
+//Return saved stories
+router.get("/getSavedStories", async (req, res) => {
+  try {
+    const getSavedStories = await Save.find();
+    res.status(200).json(getSavedStories);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .send({ msg: "There was an error getting your saved stories." });
   }
 });
 
