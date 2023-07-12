@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Story = require("../models/story");
-const savedStory = require("../models/savedStory");
+const Save = require("../models/savedStory");
 
 router.get("/", (req, res) => {
   res.status(200).send("Silly Stories Back End");
@@ -23,7 +23,7 @@ router.get("/randomStory", async (req, res) => {
     const newStory = await Story.find({});
     storyArray.push(newStory);
     const randomStory = Math.floor(Math.random() * storyArray[0].length);
-    console.log(randomStory);
+
     res.status(200).json(storyArray[0][randomStory]);
   } catch (err) {
     console.log(err);
@@ -35,9 +35,11 @@ router.get("/randomStory", async (req, res) => {
 
 //Save story
 router.post("/saveStory", async (req, res) => {
+  console.log("SaveStory endpoint");
+  console.log(req.body.story.displayStory);
   try {
-    const saveStory = new savedStory({
-      story: req.body.story,
+    const saveStory = new Save({
+      story: req.body.story.displayStory,
     });
 
     const addSavedStory = await saveStory.save();

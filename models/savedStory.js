@@ -10,4 +10,4 @@ const savedSchema = new mongoose.Schema(
   { collection: "savedStories" }
 );
 
-module.exports = mongoose.model("SavedStory", savedSchema);
+module.exports = mongoose.model("Save", savedSchema);

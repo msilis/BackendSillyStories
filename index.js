@@ -26,7 +26,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/", groupRouter);
 app.use(bodyParser.json());
+app.use("/", groupRouter);
 
 app.listen(port, () => console.log(`Listening on ${port}`));
