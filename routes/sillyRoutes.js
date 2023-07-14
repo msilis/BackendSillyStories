@@ -63,4 +63,21 @@ router.get("/getSavedStories", async (req, res) => {
   }
 });
 
+//Delete story
+router.post("/deleteStory", async (req, res) => {
+  console.log(req.body);
+  const storyToDelete = req.body.storyId;
+  try {
+    if (req.body.storyId) {
+      const deleteStory = await Save.deleteOne({ _id: storyToDelete });
+      res.status(200).json(deleteStory);
+    } else {
+      console.log("Request body is empty");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ msg: "There was an error deleting your story." });
+  }
+});
+
 module.exports = router;

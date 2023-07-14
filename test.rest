@@ -1,8 +1,20 @@
 POST http://localhost:8086/saveStory
-Content-Type: "application/json";
+Content-Type: application/json
 
 {
     "story": {
         "displayStory": "Sample story"
     }
 }
+
+###
+
+POST http://localhost:8086/deleteStory
+Content-Type: application/json
+
+{
+    "storyId": "64ae7aa1707b4e0135f31fc7"
+}
+
+###
+GET http://localhost:8086/randomStory
